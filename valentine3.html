@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffccd5;
+            flex-direction: column;
+        }
+        #questionText {
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 20px 40px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #noButton {
+            background-color: #f44336;
+        }
+        #responseText {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="questionText">Will you be my Valentine?</div>
+    <div class="buttons-container">
+        <button class="button" id="yesButton">Yes</button>
+        <button class="button" id="noButton">No</button>
+    </div>
+    <div id="responseText"></div>
+
+    <script>
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+        const responseText = document.getElementById("responseText");
+
+        // Function to move the "No" button to a random location
+        function moveButton() {
+            noButton.style.position = 'absolute'; // make sure it can move around
+            noButton.style.left = `${Math.random() * 90}%`;
+            noButton.style.top = `${Math.random() * 90}%`;
+            noButton.style.transform = `translate(-50%, -50%)`;
+        }
+
+        // When the user clicks "Yes", show the message
+        function handleYes() {
+            responseText.innerHTML = "Ahhh I knew you would say yes!<br>Lots of Love from Eli G the med student/programmer ;)";
+        }
+
+        // When the user clicks "No", move the button to a random location every time
+        function handleNo() {
+            moveButton();
+        }
+
+        // Add event listeners for both "click" and "touchstart" for mobile compatibility
+        yesButton.addEventListener("click", handleYes);
+        yesButton.addEventListener("touchstart", handleYes);
+
+        noButton.addEventListener("click", handleNo);
+        noButton.addEventListener("touchstart", handleNo);
+    </script>
+</body>
+</html>
